@@ -1,0 +1,22 @@
+INSERT INTO exercises (name, category, difficulty, description, image_path)
+VALUES
+('Push-Up', 'Upper Body', 'Beginner', 'Basic push movement working chest, shoulders, and triceps.', 'assets/images/pushup.jpg'),
+('Plank', 'Core', 'Beginner', 'Static hold that builds core stability.', 'assets/images/plank.jpg'),
+('Bodyweight Squat', 'Lower Body', 'Beginner', 'Leg-focused movement targeting quads, glutes, and hamstrings.', 'assets/images/squat.jpg'),
+('Mountain Climbers', 'Core', 'Intermediate', 'Fast-paced core/cardio hybrid.', 'assets/images/mountain_climbers.jpg'),
+('Burpee', 'Full Body', 'Intermediate', 'Full-body explosive movement with cardio benefits.', 'assets/images/burpee.jpg'),
+('Wall Sit', 'Lower Body', 'Beginner', 'Isometric quad and glute endurance exercise.', 'assets/images/wall_sit.jpg'),
+('Lunge', 'Lower Body', 'Beginner', 'Alternating leg movement improving strength and balance.', 'assets/images/lunge.jpg'),
+('Glute Bridge', 'Lower Body', 'Beginner', 'Targets glutes and lower back muscles.', 'assets/images/glute_bridge.jpg'),
+('Superman Hold', 'Core', 'Beginner', 'Strengthens lower back and posterior chain.', 'assets/images/superman.jpg'),
+('Triceps Dip', 'Upper Body', 'Intermediate', 'Targets triceps and shoulders using chair or bench.', 'assets/images/dips.jpg'),
+('High Knees', 'Cardio', 'Beginner', 'Dynamic cardio movement to raise heart rate.', 'assets/images/high_knees.jpg'),
+('Side Plank', 'Core', 'Intermediate', 'Oblique-focused isometric core exercise.', 'assets/images/side_plank.jpg'),
+('Inchworm', 'Full Body', 'Beginner', 'Full-body warm-up with hamstring and core engagement.', 'assets/images/inchworm.jpg'),
+('Jump Squat', 'Lower Body', 'Intermediate', 'Plyometric quad/glute exercise.', 'assets/images/jump_squat.jpg'),
+('Hollow Body Hold', 'Core', 'Advanced', 'High-tension core hold used in gymnastics.', 'assets/images/hollow_hold.jpg'),
+('Climber Taps', 'Core', 'Intermediate', 'Mountain climber variation for stability.', 'assets/images/climber_taps.jpg'),
+('Handstand Hold', 'Upper Body', 'Advanced', 'Static inversion training for shoulders and arms.', 'assets/images/handstand.jpg'),
+('Bear Crawl', 'Full Body', 'Intermediate', 'Core stability and movement control.', 'assets/images/bear_crawl.jpg'),
+('Leg Raises', 'Core', 'Intermediate', 'Targets lower abdominals.', 'assets/images/leg_raises.jpg'),
+('Pistol Squat', 'Lower Body', 'Advanced', 'One-legged squat requiring balance and strength.', 'assets/images/pistol_squat.jpg');
