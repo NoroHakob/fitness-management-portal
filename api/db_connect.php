@@ -1,43 +1,48 @@
 <?php
+// show all errors in development
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
+// load your .env
 function loadEnv($path) {
   if (!file_exists($path)) return;
-  $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-  foreach ($lines as $line) {
-    if (strpos(trim($line), '#') === 0) continue;
+  foreach (file($path, FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES) as $line) {
+    $line = trim($line);
+    if ($line === '' || $line[0] === '#') continue;
+    if (strpos($line, '=') === false) continue;
     list($key, $value) = explode('=', $line, 2);
-    putenv(trim($key) . '=' . trim($value));
+    $value = trim($value);
+    // strip quotes
+    $value = preg_replace('/^"(.*)"$/', '$1', $value);
+    putenv("$key=$value");
+    $_ENV[$key] = $value;
   }
 }
-
-// Load environment variables
 loadEnv(__DIR__ . '/../.env');
 
-// Read values
-$db_host = getenv('DB_HOST');
-$db_port = getenv('DB_PORT');
-$db_name = getenv('DB_NAME');
-$db_user = getenv('DB_USER');
-$db_pass = getenv('DB_PASSWORD');
+// build connection string
+$conn_str = sprintf(
+  'host=%s port=%s dbname=%s user=%s password=%s sslmode=require',
+  getenv('DB_HOST'),
+  getenv('DB_PORT'),
+  getenv('DB_NAME'),
+  getenv('DB_USER'),
+  getenv('DB_PASSWORD')
+);
 
-// Build connection string
-$conn_str = "host=$db_host port=$db_port dbname=$db_name user=$db_user password=$db_pass";
-
-// Connect to PostgreSQL
+// connect
 $db = pg_connect($conn_str);
-
-// Check connection
 if (!$db) {
-  die("Connection failed: " . pg_last_error());
+  die('Connection failed: ' . pg_last_error($db));
 }
 
-$result = pg_query($db, "SELECT name FROM exercises LIMIT 5");
-
+// query
+$result = pg_query($db, 'SELECT name FROM exercises LIMIT 0');
 if (!$result) {
-  die("Query failed: " . pg_last_error());
+  die('Query failed: ' . pg_last_error($db));
 }
 
-echo "<h3>Test Query Success:</h3>";
+// output 
 while ($row = pg_fetch_assoc($result)) {
-  echo "<p>" . htmlspecialchars($row['name']) . "</p>";
+  echo '<p>' . htmlspecialchars($row['name'], ENT_QUOTES) . '</p>';
 }

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: fitness-app
+    env: docker
+    plan: free
+    repo: https://github.com/yourusername/fitness-app
+    autoDeploy: true
