@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS plan_exercises;
 DROP TABLE IF EXISTS workout_plans;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS exercises;
+DROP TABLE IF EXISTS settings;
 
 
 -- ========================
@@ -65,6 +66,16 @@ CREATE TABLE logs (
   target_table TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 🔒 Settings Table for Lockdown
+CREATE TABLE settings (
+  keyword TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);
+
+-- 🔒 Insert default lockdown setting
+INSERT INTO settings (keyword, value)
+VALUES ('lockdown', 'off');
 
 -- =====================================
 -- ⚡ Trigger: Log New Exercise Insert
